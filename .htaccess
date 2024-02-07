@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^readbystars\.space$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.readbystars\.space$
+RewriteRule ^/?$ "http\:\/\/readbystars\.space\/services\.html" [R=301,L]
+
