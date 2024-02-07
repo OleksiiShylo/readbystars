@@ -478,7 +478,7 @@ h2 {
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
-  color: #000;
+  color: #f70404;
   text-shadow: 0 1px 0 #fff;
   opacity: 0.5;
   text-decoration: none;
@@ -486,7 +486,7 @@ h2 {
 /* Стили для закрывающей кнопки в фокусе или наведении */
 .close:focus,
 .close:hover {
-  color: #000;
+  color: #fb0303;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.75;
