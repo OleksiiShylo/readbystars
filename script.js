@@ -1,17 +1,24 @@
-// Функция для открытия и закрытия модального окна
 const toggleModal = (openModalLink, modal, closebtn) => {
   const openModal = (event) => {
     modal.classList.add("open");
+    document.addEventListener("keydown", handleKeyDown);
   };
 
   const closeModal = (event) => {
     modal.classList.remove("open");
+    document.removeEventListener("keydown", handleKeyDown);
   };
 
   const handleClickOutside = (event) => {
-    if (!modal.contains(event.target) && event.target !== openModalLink) {
+    const modalBox = modal.querySelector(".modal-box");
+    if (!modalBox.contains(event.target) && event.target !== openModalLink) {
       closeModal();
-      document.removeEventListener("click", handleClickOutside);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeModal();
     }
   };
 
@@ -20,11 +27,12 @@ const toggleModal = (openModalLink, modal, closebtn) => {
   document.addEventListener("click", handleClickOutside);
 };
 
-// Цикл для перебора всех модальных окон
-for (let i = 0; i < 15; i++) {
-  const openModalLink = document.getElementById("link" + i);
-  const modal = document.getElementById("service-" + i);
-  const closebtn = document.getElementById("close" + i);
+// Получение элементов модальных окон и добавление обработчиков событий
+const modalElements = document.querySelectorAll(".modal");
+modalElements.forEach((modal) => {
+  const modalIndex = modal.getAttribute("data-index");
+  const openModalLink = document.getElementById("link" + modalIndex);
+  const closebtn = modal.querySelector(".close");
 
   toggleModal(openModalLink, modal, closebtn);
-}
+});
