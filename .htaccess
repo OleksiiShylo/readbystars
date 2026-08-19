@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# HTTP → HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://readbystars.space%{REQUEST_URI} [R=301,L]
+
+# www → без www
 RewriteCond %{HTTP_HOST} ^www\.readbystars\.space$ [NC]
 RewriteRule ^(.*)$ https://readbystars.space/$1 [R=301,L]
-
